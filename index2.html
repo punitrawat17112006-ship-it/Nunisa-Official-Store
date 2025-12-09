@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nunisa Official Store – MLBB Accounts & EMI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/x-icon" href="favicon-256x256.png">
+  <style>
+    :root {
+      --bg: #05060a;
+      --card-bg: rgba(15, 17, 25, 0.95);
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --accent: #00e0ff;
+      --accent-soft: rgba(0, 224, 255, 0.4);
+      --text-main: #f5f5f5;
+      --text-soft: #b9bcc7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151928 0, #05060a 55%);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+    }
+
+    a { color: inherit; }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to right, rgba(5,6,10,0.96), rgba(5,6,10,0.9));
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 8vw;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .nav-logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .nav-links a {
+      margin-left: 18px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: var(--text-soft);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    header, section { padding: 60px 8vw; }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      gap: 30px;
+    }
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: 1.4fr 1fr; align-items: center; }
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.2rem);
+      margin-bottom: 10px;
+    }
+    .hero-sub {
+      max-width: 520px;
+      font-size: 1.02rem;
+      color: var(--text-soft);
+      margin-bottom: 30px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .tag {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text-soft);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 16px var(--accent-soft);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      background: radial-gradient(circle at top left, rgba(0,224,255,0.18), rgba(0,224,255,0.03));
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px var(--accent-soft);
+      background: radial-gradient(circle at top left, rgba(0,224,255,0.25), rgba(0,224,255,0.08));
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-top: 10px;
+    }
+
+    .hero-card {
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(9,11,18,0.96));
+      padding: 22px 20px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+    }
+    .hero-card h3 { margin-top: 0; margin-bottom: 10px; }
+    .hero-card p { margin: 3px 0; font-size: 0.9rem; color: var(--text-soft); }
+
+    /* STATS */
+    .stats-row {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+    @media (min-width: 700px) {
+      .stats-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .stat {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(8,10,18,0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stat span:first-child { opacity: 0.8; }
+    .stat span:last-child { font-weight: 600; }
+
+    h2 {
+      font-size: 1.9rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section-sub {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      max-width: 640px;
+      margin: 0 auto 30px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    .grid-3@lg {}
+    @media (min-width: 900px) {
+      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .card {
+      padding: 20px 18px;
+      border-radius: 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-soft);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.75);
+    }
+    .card h3 { margin-top: 0; margin-bottom: 8px; font-size: 1.05rem; }
+    .card p { margin: 4px 0; font-size: 0.9rem; color: var(--text-soft); }
+
+    ul { padding-left: 18px; }
+
+    /* EMI featured box */
+    .emi-box {
+      border-radius: 18px;
+      padding: 22px 20px;
+      background: radial-gradient(circle at top left, rgba(0,224,255,0.16), rgba(7,10,16,0.95));
+      border: 1px solid var(--accent-soft);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      max-width: 760px;
+      margin: 0 auto 10px;
+    }
+    .emi-box h3 { margin-top: 0; margin-bottom: 10px; }
+    .emi-box ul { margin: 0; }
+    .emi-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.3);
+      background: rgba(5,6,10,0.55);
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-radius: 14px;
+      padding: 14px 14px;
+      border: 1px solid var(--border-soft);
+      margin-bottom: 10px;
+      background: rgba(9,11,18,0.96);
+    }
+    .faq-q {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+
+    /* CONTACT & FOOTER */
+    .center { text-align: center; }
+    footer {
+      padding: 30px 8vw 40px;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      background: #05060a;
+    }
+
+    /* Floating WhatsApp */
+    .wa-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(37,211,102,0.8);
+      z-index: 40;
+    }
+    .wa-float:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px rgba(37,211,102,1);
+    }
+
+    /* small */
+    @media (max-width: 600px) {
+      header, section { padding: 40px 6vw; }
+      .nav { padding: 10px 6vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">NS</div>
+      <div>NUNISA OFFICIAL STORE</div>
+    </div>
+    <div class="nav-links">
+      <a href="#accounts">Accounts</a>
+      <a href="#emi">EMI</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="hero">
+      <div>
+        <div class="hero-tags">
+          <span class="tag">MLBB Accounts</span>
+          <span class="tag">0% EMI</span>
+          <span class="tag">Global Customers</span>
+        </div>
+        <h1 class="hero-title">Premium Mobile Legends Accounts with 0% EMI Options</h1>
+        <p class="hero-sub">
+          Nunisa Official Store provides verified Mobile Legends: Bang Bang accounts,
+          secure transfer and flexible payment plans up to 120 days with 0% extra fees.
+        </p>
+        <a class="btn" href="https://wa.me/919707246461" target="_blank">
+          BUY ON WHATSAPP
+        </a>
+        <div class="hero-meta">
+          ✅ Fast delivery &nbsp; • &nbsp; ✅ Step-by-step binding support &nbsp; • &nbsp; Since 2024
+        </div>
+
+        <div class="stats-row">
+          <div class="stat"><span>Total Orders</span><span>1000+*</span></div>
+          <div class="stat"><span>Countries Served</span><span>10+*</span></div>
+          <div class="stat"><span>Refund on EMI</span><span>Up to 50%*</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Featured Account (Sample)</h3>
+        <p><strong>Rank:</strong> Mythic Glory</p>
+        <p><strong>Skins:</strong> 200+ (Limited, Epic, Collector)</p>
+        <p><strong>Emblems:</strong> Almost maxed</p>
+        <p><strong>Status:</strong> Clean history, no ban record (proof provided)</p>
+        <p style="margin-top:10px;"><strong>Price:</strong> From ₹10,000 (EMI available)</p>
+        <p style="margin-top:12px;">
+          <a class="btn" href="https://wa.me/919707246461" target="_blank" style="padding:10px 20px;font-size:0.9rem;">
+            Ask Details on WhatsApp
+          </a>
+        </p>
+        <p style="font-size:0.8rem;color:var(--text-soft);margin-top:10px;">
+          *All numbers are examples and can be updated anytime.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHY US -->
+  <section id="why">
+    <h2>Why Buy From Nunisa?</h2>
+    <p class="section-sub">
+      We focus on safe transfers, transparent information and long-term customers,
+      not one-time sales.
+    </p>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Secure Transfer</h3>
+        <p>Unbinding and rebinding are done with you on chat or call. We guide you until the
+        account is fully under your control.</p>
+      </div>
+      <div class="card">
+        <h3>Instant Delivery</h3>
+        <p>Once payment is confirmed, you receive account details quickly with screenshots and proof
+        of rank and skins.</p>
+      </div>
+      <div class="card">
+        <h3>Verified Accounts</h3>
+        <p>All accounts are checked for rank, skins, and history before listing. No random or
+        unverified accounts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOUNTS -->
+  <section id="accounts">
+    <h2>Featured MLBB Accounts</h2>
+    <p class="section-sub">
+      Examples below. Real stock and prices are updated daily on WhatsApp.
+      Message us for the latest list.
+    </p>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Mythic Glory • 200+ Skins</h3>
+        <p>Rank: Mythic Glory</p>
+        <p>Skins: 200+ including limited and collector skins.</p>
+        <p>Emblems: Almost maxed.</p>
+        <p>Price: From ₹10,000 (EMI available)</p>
+        <p><a class="btn" href="https://wa.me/919707246461" target="_blank" style="padding:10px 20px;font-size:0.9rem;">Ask on WhatsApp</a></p>
+      </div>
+      <div class="card">
+        <h3>Mythic • 120+ Skins</h3>
+        <p>Rank: Mythic</p>
+        <p>Skins: 120+ meta heroes.</p>
+        <p>Good emblems & history.</p>
+        <p>Price: From ₹7,000</p>
+        <p><a class="btn" href="https://wa.me/919707246461" target="_blank" style="padding:10px 20px;font-size:0.9rem;">Ask on WhatsApp</a></p>
+      </div>
+      <div class="card">
+        <h3>Legend • Starter Smurf</h3>
+        <p>Rank: Legend</p>
+        <p>Nice skin collection & emblems.</p>
+        <p>Perfect for ranked grind.</p>
+        <p>Price: From ₹3,000</p>
+        <p><a class="btn" href="https://wa.me/919707246461" target="_blank" style="padding:10px 20px;font-size:0.9rem;">Ask on WhatsApp</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMI POLICY -->
+  <section id="emi">
+    <h2>EMI & Booking Policy</h2>
+    <p class="section-sub">
+      Flexible EMI options are available on selected high-value accounts. Please read the rules carefully.
+    </p>
+
+    <div class="emi-box">
+      <span class="emi-tag">0% EMI • 30–120 Days</span>
+      <h3>EMI System – Official Rules</h3>
+      <ul>
+        <li>We have <strong>no additional store fees</strong>.</li>
+        <li>Any account can be <strong>booked for 24 hours</strong> with a
+            <strong>10% advance payment</strong>. This booking amount is
+            <strong>non-refundable</strong>.</li>
+        <li><strong>EMI payment</strong> is available from <strong>30 to 120 days</strong> with
+            <strong>0% extra fees</strong>.</li>
+        <li>To start an EMI, a <strong>minimum 50% of the account price</strong> must be paid as
+            the first installment.</li>
+        <li>If you cancel your EMI:
+          <ul>
+            <li>When your down-payment is <strong>50% or more</strong>, you can receive up to a
+                <strong>50% refund</strong> of the amount paid.</li>
+            <li>When your down-payment is <strong>below 50%</strong>, there is
+                <strong>no refund</strong>.</li>
+          </ul>
+        </li>
+        <li>EMI accounts are available only for orders from <strong>₹10,000 and above</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>FAQ</h2>
+    <p class="section-sub">
+      Some common questions from our buyers. You can always ask more directly on WhatsApp.
+    </p>
+
+    <div class="faq-item">
+      <div class="faq-q">Is this store official with Moonton?</div>
+      <div class="faq-a">
+        No. We are an independent third-party store. All game rights and trademarks belong
+        to Moonton. We simply provide account trading and top-up services.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I know the account is safe?</div>
+      <div class="faq-a">
+        Before purchase, we show screenshots, screen-recordings and binding information.
+        Transfer is done while you are online so you can confirm everything.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I get a refund?</div>
+      <div class="faq-a">
+        For normal full-payment purchases, digital goods are generally non-refundable once
+        account details are delivered. For EMI, please read the EMI & Booking Policy above.
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact & Support</h2>
+    <p class="section-sub">
+      Need a custom account, bulk order or help choosing the best option for your budget?
+      Our support is available on WhatsApp.
+    </p>
+    <p class="center">
+      <a class="btn" href="https://wa.me/919707246461" target="_blank">
+        CHAT ON WHATSAPP
+      </a>
+    </p>
+    <p class="center" style="margin-top:10px;color:var(--text-soft);">
+      Official WhatsApp: <strong>+91 97072 46461</strong>
+    </p>
+  </section>
+
+  <footer>
+    NUNISA OFFICIAL STORE • Digital goods only. All sales are final once account details are delivered.<br />
+    Mobile Legends: Bang Bang is a trademark of its respective owner. We are not affiliated with or endorsed by Moonton.
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="wa-float" href="https://wa.me/919707246461" target="_blank" aria-label="Chat on WhatsApp">🟢</a>
+</body>
+</html>
